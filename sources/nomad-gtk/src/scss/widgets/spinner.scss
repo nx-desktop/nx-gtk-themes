@@ -1,22 +1,22 @@
 @include exports("spinner") {
     @keyframes spin {
         to {
-        	-gtk-icon-transform: rotate(1turn);
+        	-gtk-icon-transform: rotate(2turn);
         }
     }
 
     spinner {
-        color: $selected_bg_color;
+        color: $base_color;
         opacity: 0;
         -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
 
         &:checked {
             opacity: 1;
-            animation: spin .7s cubic-bezier(.3, .4, .3, .2) infinite;
+            background-color: transparent;
+            color: $selected_bg_color;
+            animation: spin 1.7s cubic-bezier(.5, .5, .5, .01) infinite;
             min-height: 20px;
             min-width: 20px;
-
-            &:disabled { opacity: .5; }
         }
     }
 }
