@@ -1,0 +1,357 @@
+@include exports("progressbar") {
+    progressbar {
+        padding: 0;
+        border-radius: $roundness;
+        font-size: smaller;
+        color: alpha($fg_color, .6);
+
+        &.horizontal {
+            trough,
+            progress { min-height: 16px; }
+        }
+
+        &.vertical {
+            trough,
+            progress { min-width: 16px; }
+        }
+
+        trough {
+            border: 1px solid $borders_color;
+            background-color: shade($bg_color, 1.08);
+            background-image: none;
+            border-radius: $roundness;
+        }
+
+        progress {
+            background-color: $selected_bg_color;
+            margin: -1px;
+
+            border-radius: 0;
+            border: 1px solid $selected_borders_color;
+
+            &.left {
+                border-top-left-radius: $roundness;
+                border-bottom-left-radius: $roundness;
+            }
+
+            &.right {
+                border-top-right-radius: $roundness;
+                border-bottom-right-radius: $roundness;
+            }
+
+            &.bottom {
+                border-bottom-left-radius: $roundness;
+                border-bottom-right-radius: $roundness;
+            }
+
+            &.top {
+                border-top-left-radius: $roundness;
+                border-top-right-radius: $roundness;
+            }
+        }
+    }
+
+    levelbar {
+        &.horizontal block {
+            min-width: 34px;
+            min-height: 4px;
+        }
+
+        &.vertical block {
+            min-width: 4px;
+            min-height: 34px;
+        }
+
+        & { transition: 200ms ease-out; }
+
+        trough {
+            background-color: $bg_color;
+
+            border: 1px solid alpha(border_normal($bg_color), .5);
+            border-radius: $roundness;
+            padding: 2px;
+        }
+
+        &.horizontal.discrete block {
+            margin: 0 1px;
+
+            &:first-child { margin: 0; }
+        }
+
+        &.vertical.discrete block {
+            margin: 1px 0;
+
+            &:first-child { margin: 0; }
+        }
+
+        block {
+            @include linear-gradient($selected_bg_color);
+
+            border-color: transparent;
+            border-radius: $roundness;
+
+            &.low {
+                background-color: $warning_color;
+                border-color: transparent;
+            }
+
+            &.high,
+            &:not(.empty) {
+                background-color: $success_color;
+                border-color: transparent;
+            }
+
+            &.full {
+                background-color: shade($selected_bg_color, .8);
+                border-color: transparent;
+            }
+
+            &.empty {
+                background-color: transparent;
+                border-color: transparent;
+                box-shadow: none;
+            }
+        }
+    }
+
+    scale {
+        $_marks_length: 3px;
+        $_marks_distance: 1px;
+        $button_bg: $bg_color;
+        $ease-out-quad: cubic-bezier(.25, .46, .45, .94);
+        $button_transition: all 200ms $ease-out-quad;
+
+        min-height: 20px;
+        min-width: 20px;
+        padding: $spacing;
+
+        &.horizontal {
+            trough { padding: 1px; }
+
+            highlight, fill { margin: -2px; }
+        }
+
+        &.vertical {
+            trough { padding: 1px; }
+
+            highlight, fill { margin: -2px; }
+        }
+
+        slider {
+            min-height: 18px;
+            min-width: 18px;
+            margin: -9px;
+        }
+
+        &.fine-tune {
+            slider { margin: -10px; }
+
+            highlight { background-color: shade($selected_bg_color, 1.1); }
+
+            fill,
+            highlight,
+            trough {
+                border-radius: 5px;
+                -gtk-outline-radius: 7px;
+            }
+        }
+
+        trough {
+            $_scale_trough_bg: shade($bg_color, .8);
+
+            outline-offset: 0;
+            -gtk-outline-radius: 4.5px;
+
+            border-radius: 2.5px;
+            background-color: $_scale_trough_bg;
+            border: 1px solid $borders_color;
+            padding: 0;
+
+            &:disabled { background-color: transparentize($_scale_trough_bg, .45); }
+
+            menuitem:hover &,
+            row:selected &,
+            infobar & {
+                background-color: transparentize($black, .8);
+
+                highlight {
+                    background-color: $selected_fg_color;
+
+                    &:disabled { background-color: #49c2d0; }
+                }
+
+                &:disabled { background-color: transparentize($black, .9); }
+            }
+        }
+
+        highlight {
+            border-radius: 2.5px;
+            background-color: $selected_bg_color;
+            border: 1px solid $selected_borders_color;
+            margin: -1px;
+            padding: 0;
+
+            &:disabled { background-color: #49c2d0; }
+        }
+
+        fill {
+            border-radius: 2.5px;
+            background-color: $selected_bg_color;
+
+            &:disabled { background-color: transparent; }
+        }
+
+        slider {
+            $_slider_border: transparentize(shade($button_border, .25), .5);
+
+            background-color: $button_bg;
+            border: 1px solid $_slider_border;
+            border-radius: 100%;
+
+            transition: $button_transition;
+            transition-property: background, border;
+
+            &:hover { background-color: lighten($button_bg, 5%); }
+
+            &:active {
+                background-clip: border-box;
+                background-color: lighten($button_bg, 10%);
+                border-color: shade($selected_bg_color, .86);
+            }
+
+            &:disabled {
+                background-color: mix($fg_color, $bg_color, .55);
+                border-color: transparentize($_slider_border, .2);
+            }
+
+            menuitem:hover &,
+            row:selected &,
+            infobar & {
+                background-clip: border-box;
+                background-color: $selected_fg_color;
+                border-color: $selected_fg_color;
+
+                &:hover {
+                    background-color: mix($selected_fg_color, $selected_bg_color, .85);
+                    border-color: mix($selected_fg_color, $selected_bg_color, .85);
+                }
+
+                &:active {
+                    background-color: mix($selected_fg_color, $selected_bg_color, .5);
+                    border-color: mix($selected_fg_color, $selected_bg_color, .5);
+                }
+
+                &:disabled {
+                    background-color: mix($selected_fg_color, $selected_bg_color, .55);
+                    border-color: mix($selected_fg_color, $selected_bg_color, .55);
+                }
+            }
+        }
+
+        value { color: alpha(currentColor, .4); }
+
+        marks {
+            color: alpha(currentColor, .4);
+
+            @each $marks_class, $marks_pos, $marks_margin in (top, top, bottom),
+                (bottom, bottom, top),
+                (top, left, right),
+                (bottom, right, left) {
+                &.#{$marks_class} {
+                    margin-#{$marks_margin}: $_marks_distance;
+                    margin-#{$marks_pos}: -($_marks_distance + $_marks_length);
+                }
+            }
+        }
+
+        &.fine-tune marks {
+            @each $marks_class, $marks_pos, $marks_margin in (top, top, bottom),
+                (bottom, bottom, top),
+                (top, left, right),
+                (bottom, right, left) {
+                &.#{$marks_class} {
+                    margin-#{$marks_margin}: ($_marks_distance - 1px);
+                    margin-#{$marks_pos}: -($_marks_distance + $_marks_length - 2px);
+                }
+            }
+        }
+
+        &.horizontal {
+            indicator {
+                min-height: $_marks_length;
+                min-width: 1px;
+            }
+
+            &.fine-tune indicator { min-height: ($_marks_length - 1px); }
+        }
+
+        &.vertical {
+            indicator {
+                min-height: 1px;
+                min-width: $_marks_length;
+            }
+
+            &.fine-tune indicator { min-width: ($_marks_length - 1px); }
+        }
+
+        &.color {
+            trough {
+                padding: 0;
+                border: 0;
+                background-image: none;
+            }
+
+            highlight, fill { margin: 0; }
+
+            &.horizontal {
+                padding: 0 0 6px 0;
+
+                trough {
+                    border-top-left-radius: 0;
+                    border-top-right-radius: 0;
+                }
+
+                slider {
+                    &:hover, &, &:disabled, &:disabled, & {
+                        margin-bottom: 0;
+                        margin-top: 0;
+                    }
+                }
+            }
+
+            &.vertical {
+                &:dir(ltr) {
+                    padding: 0 0 0 6px;
+
+                    trough {
+                        border-bottom-right-radius: 0;
+                        border-top-right-radius: 0;
+                    }
+
+                    slider {
+                        &:hover, &, &:disabled, &:disabled, & {
+                            margin-left: 0;
+                            margin-right: 0;
+                        }
+                    }
+                }
+
+                &:dir(rtl) {
+                    padding: 0 6px 0 0;
+
+                    trough {
+                        border-bottom-left-radius: 0;
+                        border-top-left-radius: 0;
+                    }
+
+                    slider {
+                        &:hover, &, &:disabled, &:disabled, & {
+                            margin-right: 0;
+                            margin-left: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

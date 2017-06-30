@@ -1,0 +1,160 @@
+@include exports("colorchooser") {
+    colorswatch {
+
+        &:drop(active), & { border-style: none; }
+
+        $_colorswatch_radius: $roundness;
+
+        &.top {
+            border-top-left-radius: $_colorswatch_radius + .5px;
+            border-top-right-radius: $_colorswatch_radius + .5px;
+
+            overlay {
+                border-top-left-radius: $_colorswatch_radius;
+                border-top-right-radius: $_colorswatch_radius;
+            }
+        }
+
+        &.bottom {
+            border-bottom-left-radius: $_colorswatch_radius + .5px;
+            border-bottom-right-radius: $_colorswatch_radius + .5px;
+
+            overlay {
+                border-bottom-left-radius: $_colorswatch_radius;
+                border-bottom-right-radius: $_colorswatch_radius;
+            }
+        }
+
+        &.left,
+        &:first-child:not(.top) {
+            border-top-left-radius: $_colorswatch_radius + .5px;
+            border-bottom-left-radius: $_colorswatch_radius + .5px;
+
+            overlay {
+                border-top-left-radius: $_colorswatch_radius;
+                border-bottom-left-radius: $_colorswatch_radius;
+            }
+        }
+
+        &.right,
+        &:last-child:not(.bottom) {
+            border-top-right-radius: $_colorswatch_radius + .5px;
+            border-bottom-right-radius: $_colorswatch_radius + .5px;
+
+            overlay {
+                border-top-right-radius: $_colorswatch_radius;
+                border-bottom-right-radius: $_colorswatch_radius;
+            }
+        }
+
+        &.dark overlay {
+            color: $selected_fg_color;
+
+            &:hover { border-color: transparentize($black, .2); }
+
+            & { color: $backdrop_selected_fg_color; }
+        }
+
+        &.light overlay {
+            color: $text_color;
+
+            &:hover { border-color: transparentize($black, .5); }
+
+            & { color: $backdrop_text_color; }
+        }
+
+        &:drop(active) {
+            box-shadow: none;
+
+            &.light overlay {
+                border-color: $drop_target_color;
+                box-shadow: inset 0 0 0 2px darken($drop_target_color, 7%),
+                            inset 0 0 0 1px $drop_target_color;
+            }
+
+            &.dark overlay {
+                border-color: $drop_target_color;
+                box-shadow: inset 0 0 0 2px transparentize($black, .7),
+                            inset 0 0 0 1px $drop_target_color;
+            }
+        }
+
+        overlay {
+            border: 1px solid transparentize($black, .7);
+
+            &:hover {
+                box-shadow: inset 0 1px transparentize($white, .6),
+                            inset 0 -1px transparentize($black, .8);
+            }
+
+            &,
+            &:hover {
+                border-color: transparentize($black, .7);
+                box-shadow: none;
+            }
+        }
+
+        &:disabled {
+            opacity: .5;
+
+            overlay {
+                border-color: transparentize($black, .4);
+                box-shadow: none;
+            }
+        }
+
+        row:selected & { box-shadow: 0 0 0 2px $selected_fg_color; }
+
+        &#add-color-button {
+            border-radius: $_colorswatch_radius $_colorswatch_radius 0 0;
+
+            &:only-child { border-radius: $_colorswatch_radius; }
+
+            overlay {
+                background-color: shade($bg_color, .95);
+                color: $fg_color;
+
+                &:hover { background-color: shade($bg_color, .9); }
+
+                & { background-color: shade($backdrop_bg_color, .95); }
+            }
+        }
+
+        &#editor-color-sample {
+            border-radius: $_colorswatch_radius;
+
+            overlay { border-radius: $_colorswatch_radius + .5px; }
+       }
+    }
+
+    button.color {
+        padding: $spacing;
+
+        colorswatch:only-child {
+            &, overlay { border-radius: 0; }
+            box-shadow: 0 1px _text_shadow_color();
+        }
+
+        &:disabled,
+        &,
+        &:active,
+        &:checked { colorswatch:only-child { box-shadow: none; } }
+    }
+}
+
+@include exports("miscchoosers") {
+    filechooser {
+        .dialog-action-box {
+            border-top: 1px solid $borders_color;
+
+            & { border-top-color: $backdrop_borders_color; }
+        }
+
+        #pathbarbox { border-bottom: 1px solid $bg_color; }
+    }
+
+    filechooserbutton:drop(active) {
+        box-shadow: none;
+        border-color: transparent;
+    }
+}
