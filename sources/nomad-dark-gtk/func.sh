@@ -7,9 +7,8 @@ _render() {
 	index=(nomad-{dark,light})
 
 	for i in "${index[@]}"; do
-		for img in `cat "$i/src/index"`; do
+		for img in $(cat "$i/src/index"); do
 			if [ ! -f "$i/gtk-3.0/img/$img.png" ]; then
-				in="$i/src/$img.png"
 				out="$i/gtk-3.0/img/$img.png"
 				out2="$i/gtk-3.0/img/$img@2.png"
 
