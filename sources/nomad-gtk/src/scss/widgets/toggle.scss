@@ -1,163 +1,163 @@
 @mixin toggle($type) {
-    background-image: none;
+	background-image: none;
 
-    -gtk-icon-source: -gtk-scaled(url("img/#{$type}-unchecked.png"),
-                                  url("img/#{$type}-unchecked@2.png"));
+	-gtk-icon-source: -gtk-scaled(url("img/#{$type}-unchecked.png"),
+								  url("img/#{$type}-unchecked@2.png"));
 
-    &:disabled { -gtk-icon-source: -gtk-scaled(url("img/#{$type}-unchecked-disabled.png"),
-                                               url("img/#{$type}-unchecked-disabled@2.png")); }
+	&:disabled { -gtk-icon-source: -gtk-scaled(url("img/#{$type}-unchecked-disabled.png"),
+											   url("img/#{$type}-unchecked-disabled@2.png")); }
 
-    &:checked, &:active {
-        -gtk-icon-source: -gtk-scaled(url("img/#{$type}-checked.png"),
-                                      url("img/#{$type}-checked@2.png"));
+	&:checked, &:active {
+		-gtk-icon-source: -gtk-scaled(url("img/#{$type}-checked.png"),
+									  url("img/#{$type}-checked@2.png"));
 
-        &:disabled { -gtk-icon-source: -gtk-scaled(url("img/#{$type}-checked-disabled.png"),
-                                                   url("img/#{$type}-checked-disabled@2.png")); }
-    }
+		&:disabled { -gtk-icon-source: -gtk-scaled(url("img/#{$type}-checked-disabled.png"),
+												   url("img/#{$type}-checked-disabled@2.png")); }
+	}
 
-    &:indeterminate {
-        -gtk-icon-source: -gtk-scaled(url("img/#{$type}-mixed.png"),
-                                      url("img/#{$type}-mixed@2.png"));
+	&:indeterminate {
+		-gtk-icon-source: -gtk-scaled(url("img/#{$type}-mixed.png"),
+									  url("img/#{$type}-mixed@2.png"));
 
-        &:disabled { -gtk-icon-source: -gtk-scaled(url("img/#{$type}-mixed-disabled.png"),
-                                                   url("img/#{$type}-mixed-disabled@2.png")); }
-    }
+		&:disabled { -gtk-icon-source: -gtk-scaled(url("img/#{$type}-mixed-disabled.png"),
+												   url("img/#{$type}-mixed-disabled@2.png")); }
+	}
 
-    menuitem &, modelbutton & {
-        -gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-checked-disabled.png"),
-                                      url("img/menuitem-#{$type}-checked-disabled@2.png"));
+	menuitem &, modelbutton & {
+		-gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-checked-disabled.png"),
+									  url("img/menuitem-#{$type}-checked-disabled@2.png"));
 
-        &:disabled { -gtk-icon-source: none; }
+		&:disabled { -gtk-icon-source: none; }
 
-        &:checked, &:active {
-            -gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-checked.png"),
-                                          url("img/menuitem-#{$type}-checked@2.png"));
+		&:checked, &:active {
+			-gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-checked.png"),
+										  url("img/menuitem-#{$type}-checked@2.png"));
 
-            &:hover { -gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-checked-hover.png"),
-                                                    url("img/menuitem-#{$type}-checked-hover@2.png")); }
+			&:hover { -gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-checked-hover.png"),
+													url("img/menuitem-#{$type}-checked-hover@2.png")); }
 
-            &:disabled { -gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-checked-disabled.png"),
-                                                       url("img/menuitem-#{$type}-checked-disabled@2.png")); }
-        }
+			&:disabled { -gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-checked-disabled.png"),
+													   url("img/menuitem-#{$type}-checked-disabled@2.png")); }
+		}
 
-        &:indeterminate {
-            -gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-mixed.png"),
-                                          url("img/menuitem-#{$type}-mixed@2.png"));
+		&:indeterminate {
+			-gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-mixed.png"),
+										  url("img/menuitem-#{$type}-mixed@2.png"));
 
-            &:hover { -gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-mixed-hover.png"),
-                                                    url("img/menuitem-#{$type}-mixed-hover@2.png")); }
+			&:hover { -gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-mixed-hover.png"),
+													url("img/menuitem-#{$type}-mixed-hover@2.png")); }
 
-            &:disabled { -gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-mixed-disabled.png"),
-                                                       url("img/menuitem-#{$type}-mixed-disabled@2.png")); }
-        }
-    }
+			&:disabled { -gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-mixed-disabled.png"),
+													   url("img/menuitem-#{$type}-mixed-disabled@2.png")); }
+		}
+	}
 
 	modelbutton & {
-        &:checked {
-            &:hover { -gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-checked.png"),
-                                                    url("img/menuitem-#{$type}-checked@2.png")); }
-        }
+		&:checked {
+			&:hover { -gtk-icon-source: -gtk-scaled(url("img/menuitem-#{$type}-checked.png"),
+													url("img/menuitem-#{$type}-checked@2.png")); }
+		}
 	}
 }
 
 @include exports("checkradio") {
-    radio {
-        @include toggle("radio");
-        min-width: 20px;
-        min-height: 20px;
-        margin-right: $spacing;
-    }
+	radio {
+		@include toggle("radio");
+		min-width: 20px;
+		min-height: 20px;
+		margin-right: $spacing;
+	}
 
-    check {
-        @include toggle("checkbox");
-        min-width: 20px;
-        min-height: 20px;
-        margin-right: $spacing;
-    }
+	check {
+		@include toggle("checkbox");
+		min-width: 20px;
+		min-height: 20px;
+		margin-right: $spacing;
+	}
 
-    radio:dir(rtl), check:dir(rtl) {
-        margin-right: 0;
-        margin-left: $spacing;
-    }
+	radio:dir(rtl), check:dir(rtl) {
+		margin-right: 0;
+		margin-left: $spacing;
+	}
 
-    @each $s,$as in ('', '-unchecked'),
-                  (':hover', '-unchecked'),
-                  (':active', '-checked'),
-                  ('', '-unchecked'),
-                  (':checked', '-checked'),
-                  (':checked:hover', '-checked'),
-                  (':checked:active', '-checked'),
-                  (':checked', '-checked') {
-        .view.content-view.check#{$s}:not(list) {
-            -gtk-icon-shadow: none;
-            -gtk-icon-source: -gtk-scaled(url("img/grid-selection#{$as}.png"),
-                                          url("img/grid-selection#{$as}@2.png"));
-            background-color: transparent;
-        }
-    }
+	@each $s,$as in ('', '-unchecked'),
+				  (':hover', '-unchecked'),
+				  (':active', '-checked'),
+				  ('', '-unchecked'),
+				  (':checked', '-checked'),
+				  (':checked:hover', '-checked'),
+				  (':checked:active', '-checked'),
+				  (':checked', '-checked') {
+		.view.content-view.check#{$s}:not(list) {
+			-gtk-icon-shadow: none;
+			-gtk-icon-source: -gtk-scaled(url("img/grid-selection#{$as}.png"),
+										  url("img/grid-selection#{$as}@2.png"));
+			background-color: transparent;
+		}
+	}
 }
 
 @include exports("switch") {
-    switch {
-        border-radius: $roundness;
-        padding: 1px;
-        border: solid 1px $borders_color;
-        outline: none;
-        transition: all .2s ease-in;
-        min-width: 32px;
-        min-height: 16px;
-        background-color: $switch_bg_color;
-        color: $switch_fg_color;
-        box-shadow: none;
+	switch {
+		border-radius: $roundness;
+		padding: 1px;
+		border: solid 1px $borders_color;
+		outline: none;
+		transition: all .4s ease-in;
+		min-width: 32px;
+		min-height: 16px;
+		background-color: $switch_bg_color;
+		color: $switch_fg_color;
+		box-shadow: none;
+		font-weight: bold;
 
-        slider {
-            background-color: $switch_slider_bg_color;
-            transition: all .2s ease-out;
-            border-radius: $roundness;
-            border: 1px solid $borders_color;
-        }
+		slider {
+			background-color: $switch_slider_bg_color;
+			transition: all .4s ease-out;
+			border-radius: $roundness;
+			border: 1px solid $borders_color;
+		}
 
-        &:checked {
-            background-color: $selected_bg_color;
-            background-image: none;
-            border: 1px solid $selected_borders_color;
-            color: $base_color;
+		&:checked {
+			background-image: none;
+			border: 1px solid $selected_borders_color;
+			color: $selected_bg_color;
 
-            slider {
-                background-color: $white;
-                box-shadow: none;
-                border: 1px solid $selected_borders_color;
-            }
-        }
+			slider {
+				box-shadow: none;
+				border: 1px solid $borders_color;
+			}
+		}
 
-        &:disabled {
-            background-color: $switch_disabled_bg_color;
-            background-image: none;
-            border-color: $switch_disabled_border_color;
-            color: $switch_disabled_fg_color;
-            box-shadow: none;
+		&:disabled {
+			background-color: $switch_disabled_bg_color;
+			background-image: none;
+			border-color: $switch_disabled_border_color;
+			color: $switch_disabled_fg_color;
+			box-shadow: none;
 
-            slider {
-                background-color: $switch_disabled_slider_bg_color;
-            }
-        }
+			slider {
+				background-color: $switch_disabled_slider_bg_color;
+			}
+		}
 
-        list row:selected & {
-            background-color: $switch_disabled_slider_bg_color;
-            color: $switch_disabled_bg_color;
+		list row:selected & {
+			background-color: $switch_disabled_slider_bg_color;
+			color: $switch_disabled_bg_color;
+			border-color: $bg_color;
 
-            slider {
-                background-color: mix($switch_disabled_bg_color, $base_color, .4);
-            }
+			slider {
+				background-color: mix($switch_disabled_bg_color, $base_color, .4);
+			}
 
-            &:checked {
-                color: $selected_bg_color;
-                background-color: $switch_slider_bg_color;
+			&:checked {
+				color: $selected_bg_color;
+				background-color: $switch_slider_bg_color;
 
-                slider {
-                    background-color: $selected_bg_color;
-                }
-            }
-        }
-    }
+				slider {
+					background-color: $selected_bg_color;
+				}
+			}
+		}
+	}
 }

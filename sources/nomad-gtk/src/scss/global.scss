@@ -1,18 +1,18 @@
 @import "functions";
 
 // default color scheme
-$bg_color: #fafafa;
-$fg_color: #4d4d4d;
-$base_color: #f5f5f5;
-$text_color:  #0b0b0b;
-$selected_bg_color: #26c6da;
-$selected_fg_color: #fafafa;
+$bg_color: #393F4C;
+$fg_color: #ababab;
+$base_color: #272B35;
+$text_color:  #ababab;
+$selected_bg_color: #379FD6;
+$selected_fg_color: #ffffff;
 $tooltip_bg_color: #efefef;
 $tooltip_fg_color: #0b0b0b;
 
-$selected_borders_color: shade($selected_bg_color, .85);
-$borders_color: #c3c9d6;
-$borders_edge: transparentize(white, 0.2);
+$borders_color: #282B31;
+$selected_borders_color: $borders_color;
+$borders_edge: transparentize(gray, 0.2);
 
 //insensitive state derived colors
 $insensitive_fg_color: mix($fg_color, $bg_color, .5);

@@ -1,42 +1,44 @@
 #! /bin/sh
 
+_fail() { printf "\033[38;5;1m${@}\033[38;0;1m\n"; }
+_echo() { printf "\033[38;5;5m${@}\033[38;0;1m\n"; }
+
 _render() {
-	for i in `cat "src/index"`; do
+	index=(nomad-{dark,light})
 
-		img="gtk-3.0/img/$i"
-		src="src/img.svg"
+	for i in "${index[@]}"; do
+		for img in $(cat "$i/src/index"); do
+			if [ ! -f "$i/gtk-3.0/img/$img.png" ]; then
+				out="$i/gtk-3.0/img/$img.png"
+				out2="$i/gtk-3.0/img/$img@2.png"
 
-		if [ ! -f "$img.png" ]; then
-			inkscape -ji $i -e "$img.png" "$src" > /dev/null
-			inkscape -ji $i -d 192 -e "$img@2.png" "$src" > /dev/null
-		fi
+				inkscape -ji "$img" -e "$out" "$i/src/img.svg" > /dev/null
+				inkscape -ji "$img" -d 192 -e "$out2" "$i/src/img.svg" > /dev/null
+			fi
+		done
 	done
 }
 
 _compile() {
-	cd "src/scss/"
-	for style in "gtk*.scss"; do
-		sassc --style compact "$style" "../../gtk-3.0/$style"
+	scss=(nomad-{dark,light}/src/scss/gtk.scss)
+	gcss=(nomad-{dark,light}/gtk-3.0/gtk.css)
+
+	for i in 0 1; do
+		sassc --style compact "${scss[$i]}" "${gcss[$i]}"
 	done
-	cd -
 }
 
-_error() {
-	echo -e "\033[38;5;1m $@ \n"
-}
-
-_success() {
-	echo -e "\033[38;5;5m $@ \n"
-}
-
-_main() {
-	_render  ||
-	(_error ' - FAILED RENDERING IMAGES.'; exit) &&
-	_success ' - DONE RENDERING IMAGES.'
-
-	_compile ||
-	(_error ' - FAILED COMPILING SCSS.'; exit) &&
-	(_success ' - DONE COMPILING SCSS.'; gtk3-widget-factory)
-}
-
-_main
+if _render; then
+	_echo ' - DONE RENDERING IMAGES.'
+else
+	_fail ' - FAILED RENDERING IMAGES.'
+	exit 1
+fi
+	
+if _compile; then
+	_echo ' - DONE COMPILING SCSS.'
+#	gtk3-widget-factory
+else
+	_fail ' - FAILED COMPILING SCSS.'
+	exit 1
+fi

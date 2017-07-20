@@ -1,223 +1,236 @@
 @import "button";
 
 @mixin toolbar($bg, $fg) {
-    @include linear-gradient($bg);
-    @include border($bg);
+	@include linear-gradient($bg);
+	@include border($bg);
 
-    color: $fg;
+	color: $fg;
 
-    &:disabled {
-        @include linear-gradient(shade($bg, .9));
+	&:disabled {
+		@include linear-gradient(shade($bg, .9));
 
-        color: mix($fg, $bg, .5);
-    }
+		color: mix($fg, $bg, .5);
+	}
 
-    .title {
-        font-weight: bold;
-        padding: 0 ($spacing * 2);
-    }
+	.title {
+		font-weight: bold;
+		padding: 0 ($spacing * 2);
+	}
 
-    .subtitle {
-        font-size: smaller;
-        padding: 0 ($spacing * 2);
-    }
+	.subtitle {
+		font-size: smaller;
+		padding: 0 ($spacing * 2);
+	}
 
-    button { @include button($bg, $fg); }
+	button {
+		@include button($bg, $fg);
 
-    .linked > button { @include linked_button($bg); }
+		border: 1px solid shade($base_color, 0.5);
+		color: $fg_color;
+	}
 
-    combobox, button {
-        padding: $spacing;
+	.linked > button { @include linked_button($bg); }
 
-        &.text-button { padding: $spacing; }
+	combobox, button {
+		padding: $spacing;
 
-        &.image-button { padding: $spacing; }
-    }
+		&.text-button { padding: $spacing; }
 
-    separator {
-        &, &:disabled {
-            color: shade($bg, ($contrast - .2));
-            border-color: currentColor;
+		&.image-button { padding: $spacing; }
+	}
 
-            -GtkWidget-window-dragging: true;
-        }
-    }
+	separator {
+		&, &:disabled {
+			color: shade($bg, ($contrast - .2));
+			border-color: currentColor;
+
+			-GtkWidget-window-dragging: true;
+		}
+	}
 }
 
 @mixin inline-toolbar($bg, $fg) {
-    background-image: none;
-    border-width: 0 1px 1px;
-    border-style: solid;
-    border-color: $borders_color;
-    background-color: mix($borders_color, $bg_color, .7);
+	background-image: none;
+	border-width: 0 1px 1px;
+	border-style: none;
+	border-color: $bg_color;
+	background-color: mix($borders_color, $bg_color, .7);
 
-    & {
-        border-color: $backdrop_borders_color;
-        background-color: $backdrop_dark_fill;
-        transition: 200ms ease-out;
-    }
+	button {
+		@include button($toolbar_bg_color, $toolbar_fg_color);
 
-    button { @include button($toolbar_bg_color, $toolbar_fg_color); }
+		border: 1px solid $selected_bg_color;
+	}
 
-    toolbutton,
-    toolbutton {
-        > button.flat { @extend %linked_middle; }
+	toolbutton,
+	toolbutton {
 
-        &:first-child > button.flat { @extend %linked_button:first-child; }
+		color: red;
 
-        &:last-child > button.flat { @extend %linked_button:last-child; }
+		> button.flat {
+			@extend %linked_middle;
+		}
 
-        &:only-child > button.flat { @extend %linked_button:only-child; }
-    }
+		&:first-child > button.flat {
+			@extend %linked_button:first-child;
+		}
+
+		&:last-child > button.flat {
+			@extend %linked_button:last-child;
+		}
+
+		&:only-child > button.flat {
+			@extend %linked_button:only-child;
+		}
+	}
 }
 
 @include exports("toolbar_extends") {
-    %toolbar {
-        padding: $spacing - 1px;
-        border-style: none;
+	%toolbar {
+		padding: $spacing - 1px;
+		border-style: none;
 
-        // toolbar separators
-        &.horizontal separator { margin: 0 ($spacing + 2px) 1px; }
+		&.horizontal separator { margin: 0 ($spacing + 2px) 1px; }
 
-        &.vertical separator { margin: ($spacing + 2px) 1px ($spacing + 2px) 0; }
-    }
+		&.vertical separator { margin: ($spacing + 2px) 1px ($spacing + 2px) 0; }
+	}
 
-    %headerbar {
-        border: solid shade($borders_color, 1.1);
-        border-bottom-width: 1px;
+	%headerbar {
+		border: solid shade($borders_color, 1.1);
+		border-bottom-width: 1px;
 
-        entry,
-        spinbutton,
-        separator,
-        button {
-            margin-top: $spacing + 3px;
-            margin-bottom: $spacing + 3px;
-        }
+		entry,
+		spinbutton,
+		separator,
+		button {
+			margin-top: $spacing + 3px;
+			margin-bottom: $spacing + 3px;
+		}
 
-        switch {
-            margin-top: $spacing + 1px;
-            margin-bottom: $spacing + 1px;
-        }
+		switch {
+			margin-top: $spacing + 1px;
+			margin-bottom: $spacing + 1px;
+		}
 
-        window:not(.tiled):not(.maximized) separator:first-child + &, // tackles the paned container case
-        window:not(.tiled):not(.maximized) &:first-child { &, & { border-top-left-radius: $roundness; } }
+		window:not(.tiled):not(.maximized) separator:first-child + &,
+		window:not(.tiled):not(.maximized) &:first-child { &, & { border-top-left-radius: $roundness; } }
 
-        window:not(.tiled):not(.maximized) &:last-child { &, & { border-top-right-radius: $roundness; } }
-    }
+		window:not(.tiled):not(.maximized) &:last-child { &, & { border-top-right-radius: $roundness; } }
+	}
 
-    %titlebar {
-        @include toolbar($titlebar_bg_color, $titlebar_fg_color);
-        @include linear-gradient($titlebar_bg_color);
+	%titlebar {
+		@include toolbar($titlebar_bg_color, $titlebar_fg_color);
+		@include linear-gradient($titlebar_bg_color);
 
-        border-radius: $roundness $roundness 0 0;
-        color: mix($titlebar_fg_color, $titlebar_bg_color, .1);
-        padding: 0 $spacing;
-        min-height: 42px;
+		border-radius: $roundness $roundness 0 0;
+		color: mix($titlebar_fg_color, $titlebar_bg_color, .1);
+		padding: 0 $spacing;
+		min-height: 42px;
 
-        & {
-            @include linear-gradient($titlebar_bg_color);
+		& {
+			@include linear-gradient($titlebar_bg_color);
 
-            color: mix($titlebar_fg_color, $titlebar_bg_color, .6);
-            text-shadow: none;
-        }
+			color: mix($titlebar_fg_color, $titlebar_bg_color, .6);
+			text-shadow: none;
+		}
 
-        &.default-decoration {
-            min-height: 24px;
-            box-shadow: none;
-            border: 0;
+		&.default-decoration {
+			min-height: 24px;
+			box-shadow: none;
+			border: 0;
 
-            button.titlebutton {
-                min-height: 16px;
-                min-width: 16px;
-                margin: 0;
-                padding: 0;
-            }
-        }
+			button.titlebutton {
+				min-height: 16px;
+				min-width: 16px;
+				margin: 0;
+				padding: 0;
+			}
+		}
 
-        .tiled &,
-        .maximized { border-radius: 0; }
+		.tiled &,
+		.maximized { border-radius: 0; }
 
-        .title { font-weight: bold; }
+		.title { font-weight: bold; }
 
-        separator.titlebutton { margin-left: $spacing; }
+		separator.titlebutton { margin-left: $spacing; }
 
-        button.titlebutton + separator.titlebutton {
-            margin-left: 0;
-            margin-right: $spacing;
-        }
+		button.titlebutton + separator.titlebutton {
+			margin-left: 0;
+			margin-right: $spacing;
+		}
 
-        button.titlebutton {
-            border: 0;
-            background-image: none;
-            background-color: transparent;
-            color: mix($titlebar_fg_color, $titlebar_bg_color, .1);
-            box-shadow: none;
+		button.titlebutton {
+			border: 0;
+			background-image: none;
+			background-color: transparent;
+			color: mix($titlebar_fg_color, $titlebar_bg_color, .1);
+			box-shadow: none;
 
-            &:hover, &:hover:focus {
-                background-image: none;
-                background-color: transparent;
-                color: $selected_bg_color;
-                box-shadow: none;
-            }
+			&:hover, &:hover:focus {
+				background-image: none;
+				background-color: transparent;
+				color: $selected_bg_color;
+				box-shadow: none;
+			}
 
-            &:active, &:active:hover {
-                background-image: none;
-                background-color: transparent;
-                color: shade($selected_bg_color, .9);
-                box-shadow: none;
-            }
+			&:active, &:active:hover {
+				background-image: none;
+				background-color: transparent;
+				color: shade($selected_bg_color, .9);
+				box-shadow: none;
+			}
 
-            & {
-                background: none;
-                color: mix($titlebar_fg_color, $titlebar_bg_color, .6);
-                -gtk-icon-shadow: none;
-            }
-        }
-    }
+			& {
+				background: none;
+				color: mix($titlebar_fg_color, $titlebar_bg_color, .6);
+				-gtk-icon-shadow: none;
+			}
+		}
+	}
 }
 
 @include exports("toolbar") {
-    toolbar {
-        @include toolbar($toolbar_bg_color, $toolbar_fg_color);
+	toolbar {
+		@include toolbar($toolbar_bg_color, $toolbar_fg_color);
 
-        @extend %toolbar;
+		@extend %toolbar;
 
-        &.inline-toolbar { @include inline-toolbar($toolbar_bg_color, $toolbar_fg_color); }
-    }
+		&.inline-toolbar { @include inline-toolbar($toolbar_bg_color, $toolbar_fg_color); }
+	}
 
-    headerbar {
-        @extend %titlebar;
-        @extend %headerbar;
-    }
+	headerbar {
+		@extend %titlebar;
+		@extend %headerbar;
+	}
 
-    .titlebar:not(headerbar) {
-        window.csd > & {
-            padding: 0;
-            background-color: transparent;
-            background-image: none;
-            border-style: none;
-            border-color: transparent;
-            box-shadow: none;
-        }
+	.titlebar:not(headerbar) {
+		window.csd > & {
+			padding: 0;
+			background-color: transparent;
+			background-image: none;
+			border-style: none;
+			border-color: transparent;
+			box-shadow: none;
+		}
 
-        > separator { background-color: shade($titlebar_bg_color, .88); }
+		> separator { background-color: shade($titlebar_bg_color, .88); }
 
-        @extend %titlebar;
-    }
+		@extend %titlebar;
+	}
 
-    .background:not(.tiled):not(.maximized) .titlebar {
-        &, & {
-            border-top-left-radius: $roundness;
-            border-top-right-radius: $roundness;
-        }
-    }
+	.background:not(.tiled):not(.maximized) .titlebar {
+		&, & {
+			border-top-left-radius: $roundness;
+			border-top-right-radius: $roundness;
+		}
+	}
 
-    .background:not(.csd):not(.ssd):not(.solid-csd) headerbar {
-        &, & {
-            &, &:not(:last-child) {
-                border-radius: 0;
-                border-top-color: transparent;
-            }
-        }
-    }
+	.background:not(.csd):not(.ssd):not(.solid-csd) headerbar {
+		&, & {
+			&, &:not(:last-child) {
+				border-radius: 0;
+				border-top-color: transparent;
+			}
+		}
+	}
 }

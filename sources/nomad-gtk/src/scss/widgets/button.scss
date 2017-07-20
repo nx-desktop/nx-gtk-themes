@@ -1,416 +1,416 @@
 @include exports("button_extends") {
-    $_dot_color: $selected_bg_color;
+	$_dot_color: $selected_bg_color;
 
-    @keyframes needs_attention {
-        from {
-            background-image: -gtk-gradient(radial, center center, 0, center center, .01, to($_dot_color), to(transparent));
-        }
+	@keyframes needs_attention {
+		from {
+			background-image: -gtk-gradient(radial, center center, 0, center center, .01, to($_dot_color), to(transparent));
+		}
 
-        to {
-            background-image: -gtk-gradient(radial, center center, 0, center center, .5, to($selected_bg_color), to(transparent));
-        }
-    }
+		to {
+			background-image: -gtk-gradient(radial, center center, 0, center center, .5, to($selected_bg_color), to(transparent));
+		}
+	}
 
-    %needs_attention {
-        animation: needs_attention 150ms ease-in;
-        $_dot_shadow: _text_shadow_color();
-        background-image: -gtk-gradient(radial, center center, 0, center center, .5, to($_dot_color), to(transparent)),
-                          -gtk-gradient(radial, center center, 0, center center, .5, to($_dot_shadow), to(transparent));
-        background-size: 6px 6px, 6px 6px;
-        background-repeat: no-repeat;
-        background-position: right 3px, right 4px;
+	%needs_attention {
+		animation: needs_attention 150ms ease-in;
+		$_dot_shadow: _text_shadow_color();
+		background-image: -gtk-gradient(radial, center center, 0, center center, .5, to($_dot_color), to(transparent)),
+						  -gtk-gradient(radial, center center, 0, center center, .5, to($_dot_shadow), to(transparent));
+		background-size: 6px 6px, 6px 6px;
+		background-repeat: no-repeat;
+		background-position: right 3px, right 4px;
 
-        &:backdrop { background-size: 6px 6px, 0 0; }
-        &:dir(rtl) { background-position: left 3px, left 4px; }
-    }
+		&:backdrop { background-size: 6px 6px, 0 0; }
+		&:dir(rtl) { background-position: left 3px, left 4px; }
+	}
 
-    %button {
-        padding: $spacing ($spacing + 1);
-        border-width: 1px;
-        border-style: solid;
-        border-radius: $roundness;
-        transition: all .12s ease-in;
-        outline-color: transparent;
-    }
+	%button {
+		padding: $spacing ($spacing + 1);
+		border-width: 1px;
+		border-style: solid;
+		border-radius: $roundness;
+		transition: all .12s ease-in;
+		outline-color: transparent;
+	}
 
-    %undecorated_button {
-        border-color: transparent;
-        background-color: transparent;
-        background-image: none;
-        box-shadow: none;
-    }
+	%undecorated_button {
+		border-color: transparent;
+		background-color: transparent;
+		background-image: none;
+		box-shadow: none;
+	}
 
-    %linked_middle {
-        border-radius: 0;
-        border-left-style: none;
-        border-right-style: solid;
+	%linked_middle {
+		border-radius: 0;
+		border-left-style: none;
+		border-right-style: solid;
 
-        &:dir(rtl) {
-            border-radius: 0;
-            border-right-style: none;
-            border-left-style: solid;
-        }
-    }
+		&:dir(rtl) {
+			border-radius: 0;
+			border-right-style: none;
+			border-left-style: solid;
+		}
+	}
 
-    %linked_vertical_middle {
-        border-radius: 0;
-        border-top-style: none;
-        border-bottom-style: solid;
+	%linked_vertical_middle {
+		border-radius: 0;
+		border-top-style: none;
+		border-bottom-style: solid;
 
-        &:dir(rtl) {
-            border-radius: 0;
-            border-top-style: none;
-            border-bottom-style: solid;
-        }
-    }
+		&:dir(rtl) {
+			border-radius: 0;
+			border-top-style: none;
+			border-bottom-style: solid;
+		}
+	}
 
-    %linked_button {
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 0;
-        border-right-style: none;
-        border-left-style: none;
+	%linked_button {
+		border-width: 1px;
+		border-style: solid;
+		border-radius: 0;
+		border-right-style: none;
+		border-left-style: none;
 
-        &:first-child {
-            border-width: 1px;
-            border-radius: $roundness;
-            border-left-style: solid;
-            border-right-style: none;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
+		&:first-child {
+			border-width: 1px;
+			border-radius: $roundness;
+			border-left-style: solid;
+			border-right-style: none;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
 
-            &:dir(rtl) {
-                border-left-style: none;
-                border-right-style: solid;
-            }
-        }
+			&:dir(rtl) {
+				border-left-style: none;
+				border-right-style: solid;
+			}
+		}
 
-        &:last-child {
-            border-width: 1px;
-            border-radius: $roundness;
-            border-left-style: none;
-            border-right-style: solid;
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
+		&:last-child {
+			border-width: 1px;
+			border-radius: $roundness;
+			border-left-style: none;
+			border-right-style: solid;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
 
-            &:dir(rtl) {
-                border-left-style: solid;
-                border-right-style: none;
-            }
-        }
+			&:dir(rtl) {
+				border-left-style: solid;
+				border-right-style: none;
+			}
+		}
 
-        &:only-child, &:first-child:only-child {
-            border-width: 1px;
-            border-style: solid;
-        }
+		&:only-child, &:first-child:only-child {
+			border-width: 1px;
+			border-style: solid;
+		}
 
-        &:only-child {
-            border-radius: $roundness;
-        }
-    }
+		&:only-child {
+			border-radius: $roundness;
+		}
+	}
 
-    %linked_vertical_button {
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 0;
-        border-top-style: none;
-        border-bottom-style: none;
+	%linked_vertical_button {
+		border-width: 1px;
+		border-style: solid;
+		border-radius: 0;
+		border-top-style: none;
+		border-bottom-style: none;
 
-        &:first-child {
-            border-width: 1px;
-            border-radius: $roundness;
-            border-top-style: solid;
-            border-bottom-style: none;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
+		&:first-child {
+			border-width: 1px;
+			border-radius: $roundness;
+			border-top-style: solid;
+			border-bottom-style: none;
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
 
-            &:dir(rtl) {
-                border-top-style: none;
-                border-bottom-style: solid;
-            }
-        }
+			&:dir(rtl) {
+				border-top-style: none;
+				border-bottom-style: solid;
+			}
+		}
 
-        &:last-child {
-            border-width: 1px;
-            border-radius: $roundness;
-            border-top-style: none;
-            border-bottom-style: solid;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
+		&:last-child {
+			border-width: 1px;
+			border-radius: $roundness;
+			border-top-style: none;
+			border-bottom-style: solid;
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
 
-            &:dir(rtl) {
-                border-top-style: solid;
-                border-bottom-style: none;
-            }
-        }
+			&:dir(rtl) {
+				border-top-style: solid;
+				border-bottom-style: none;
+			}
+		}
 
-        &:only-child, &:first-child:only-child {
-            border-width: 1px;
-            border-style: solid;
-        }
+		&:only-child, &:first-child:only-child {
+			border-width: 1px;
+			border-style: solid;
+		}
 
-        &:only-child {
-            border-radius: $roundness;
-        }
-    }
+		&:only-child {
+			border-radius: $roundness;
+		}
+	}
 }
 
 @mixin linked_button($bg) {
-    @extend %linked_button;
+	@extend %linked_button;
 
-    box-shadow: none;
+	box-shadow: none;
 
-    * {
-    	box-shadow: none;
-    }
+	* {
+		box-shadow: none;
+	}
 
 }
 
 @mixin linked_vertical_button($bg) {
-    @extend %linked_vertical_button;
+	@extend %linked_vertical_button;
 
-    box-shadow: none;
+	box-shadow: none;
 
-    * {
-    	box-shadow: none;
-    }
+	* {
+		box-shadow: none;
+	}
 }
 
 @mixin button($bg, $fg) {
-    $border_strength: if(lightness($bg) > 20, 0, .1);
-    $shadow_strength: if(lightness($bg) > 20, 0, .1);
+	$border_strength: if(lightness($bg) > 20, 0, .1);
+	$shadow_strength: if(lightness($bg) > 20, 0, .1);
 
-    $button_bg: $bg_color;
+	$button_bg: $bg_color;
 
-    @extend %button;
-    @if (lightness($button_bg) > 20) {
-        border-color: border_normal($button_bg);
-        @include linear-gradient(shade($button_bg, 1.08));
-    } @else {
-        @include linear-gradient($button_bg);
-        @include border(rgba(0, 0, 0, .12 + $border_strength));  
-    }
-    
-    color: $fg;
+	@extend %button;
+	@if (lightness($button_bg) > 20) {
+		border-color: border_normal($button_bg);
+		@include linear-gradient(shade($button_bg, 1.08));
+	} @else {
+		@include linear-gradient($button_bg);
+		@include border(rgba(0, 0, 0, .12 + $border_strength));  
+	}
+	
+	color: $fg;
 
-    &, &.flat {
+	&, &.flat {
 
-        &:checked, &:active {
-            background-color: $selected_bg_color;
-            border-color: $selected_borders_color;
-            color: $selected_fg_color;
+		&:checked, &:active {
+			background-color: $selected_bg_color;
+			border-color: $selected_borders_color;
+			color: $selected_fg_color;
 
-            label {
-            	color: $selected_fg_color;
-            	transition: all .12s ease-out;
-            }
+			label {
+				color: $selected_fg_color;
+				transition: all .12s ease-out;
+			}
 
-        }
+		}
 
-        &:focus, &:hover { color: $fg_color; }
+		&:focus, &:hover { color: $fg_color; }
 
-        &:active:disabled, &:checked:disabled {
-            border-color: $borders_color;
-            color: $fg_color;
-        }
+		&:active:disabled, &:checked:disabled {
+			border-color: $borders_color;
+			color: $fg_color;
+		}
 
-        &:disabled:disabled {
-            @if (lightness($button_bg) > 50) {
-                @include linear-gradient(shade($button_bg, .95));
-            } @else {
-                @include linear-gradient(alpha($button_bg, .3));
-            }
+		&:disabled:disabled {
+			@if (lightness($button_bg) > 50) {
+				@include linear-gradient(shade($button_bg, .95));
+			} @else {
+				@include linear-gradient(alpha($button_bg, .3));
+			}
 
-            color: mix($bg, $fg, .5);
-            box-shadow: none;
-        }
-    }
+			color: mix($bg, $fg, .5);
+			box-shadow: none;
+		}
+	}
 
-    &:active { color: $fg; }
+	&:active { color: $fg; }
 
-    &.flat {
-        &:disabled:disabled {
-            background-color: transparent;
-            background-image: none;
-            color: mix($bg, $fg, .5);
-            box-shadow: none;
-        }
-    }
+	&.flat {
+		&:disabled:disabled {
+			background-color: transparent;
+			background-image: none;
+			color: mix($bg, $fg, .5);
+			box-shadow: none;
+		}
+	}
 
-    &.flat {
-        border-color: alpha($button_bg, 0);
-        background-color: alpha($button_bg, 0);
-        background-image: none;
-        box-shadow: none;
-    }
+	&.flat {
+		border-color: alpha($button_bg, 0);
+		background-color: alpha($button_bg, 0);
+		background-image: none;
+		box-shadow: none;
+	}
 
-    &.separator, .separator {
-        border: 1px solid currentColor;
-        color: shade($bg, ($contrast + .1));
+	&.separator, .separator {
+		border: 1px solid currentColor;
+		color: shade($bg, ($contrast + .1));
 
-        &:disabled { color: shade($button_bg, .85); }
-    }
+		&:disabled { color: shade($button_bg, .85); }
+	}
 }
 
 @include exports("button") {
-    %close_button {
-        border: 1px solid transparent;
-        background-color: transparent;
-        background-image: none;
-        box-shadow: none;
+	%close_button {
+		border: 1px solid transparent;
+		background-color: transparent;
+		background-image: none;
+		box-shadow: none;
 
-        &:focus, &:hover {
-            border: 1px solid alpha($bg_color, .1);
-            background-color: alpha($white, .2);
-            background-image: none;
-            box-shadow: none;
-        }
+		&:focus, &:hover {
+			border: 1px solid alpha($bg_color, .1);
+			background-color: alpha($white, .2);
+			background-image: none;
+			box-shadow: none;
+		}
 
-        &:active, &:checked, &:active:hover, &:checked:hover {
-            border: 1px solid alpha($selected_bg_color, .2);
-            background-color: alpha($white, .2);
-            background-image: none;
-            box-shadow: none;
-        }
-    }
+		&:active, &:checked, &:active:hover, &:checked:hover {
+			border: 1px solid alpha($selected_bg_color, .2);
+			background-color: alpha($white, .2);
+			background-image: none;
+			box-shadow: none;
+		}
+	}
 
-    button {
-        @include button($bg_color, $fg_color);
+	button {
+		@include button($bg_color, $fg_color);
 
-        .inline-toolbar &,
-        .linked > & { @include linked_button($bg_color); }
+		.inline-toolbar &,
+		.linked > & { @include linked_button($bg_color); }
 
-        .linked.vertical > & { @include linked_vertical_button($bg_color); }
+		.linked.vertical > & { @include linked_vertical_button($bg_color); }
 
-        &.circular,
-        &.circular-button {
-            padding: 0;
-            min-width: 28px;
-            min-height: 28px;
-            border-radius: 9999px;
-            -gtk-outline-radius: 9999px;
+		&.circular,
+		&.circular-button {
+			padding: 0;
+			min-width: 28px;
+			min-height: 28px;
+			border-radius: 9999px;
+			-gtk-outline-radius: 9999px;
 
-            label { padding: 0; }
-        }
-    }
+			label { padding: 0; }
+		}
+	}
 
-    spinbutton {
-        button {
-            color: mix($text_color, $base_color, .4);
+	spinbutton {
+		button {
+			color: mix($text_color, $base_color, .4);
 
-            &:active, &:checked, &:hover { color: $text_color; }
+			&:active, &:checked, &:hover { color: $text_color; }
 
-            &:disabled { color: alpha($insensitive_fg_color, .8); }
-        }
+			&:disabled { color: alpha($insensitive_fg_color, .8); }
+		}
 
-        &:not(.vertical) {
-            border: 1px solid $borders_color;
-            background-color: transparent;
-            background-image: none;
-            box-shadow: none;
-            padding: 0;
-            color: $text_color;
-            caret-color: $text_color;
-            border-radius: $roundness;
+		&:not(.vertical) {
+			border: 1px solid $borders_color;
+			background-color: transparent;
+			background-image: none;
+			box-shadow: none;
+			padding: 0;
+			color: $text_color;
+			caret-color: $text_color;
+			border-radius: $roundness;
 
-            &:focus, &:active { border-color: $selected_borders_color; }
+			&:focus, &:active { border-color: $selected_borders_color; }
 
-            &:disabled {
-                @include linear-gradient(shade($base_color, .9), to top);
-                color: mix($base_color, $text_color, .5);
-            }
+			&:disabled {
+				@include linear-gradient(shade($base_color, .9), to top);
+				color: mix($base_color, $text_color, .5);
+			}
 
-            entry {
-                border: 0;
-                border-radius: $roundness;
-                box-shadow: none;
-            }
+			entry {
+				border: 0;
+				border-radius: $roundness;
+				box-shadow: none;
+			}
 
-            button {
-                border-radius: 0;
-                border-color: alpha($borders_color, .8);
-                border-style: none;
-                background-image: none;
-                box-shadow: none;
+			button {
+				border-radius: 0;
+				border-color: alpha($borders_color, .8);
+				border-style: none;
+				background-image: none;
+				box-shadow: none;
 
-                &:hover:active { color: $selected_fg_color; }
+				&:hover:active { color: $selected_fg_color; }
 
-                &:hover {
-                    background-color: shade($bg_color, 1.11);
-                }
+				&:hover {
+					background-color: shade($bg_color, 1.11);
+				}
 
-                &:dir(rtl) { border-style: none; }
+				&:dir(rtl) { border-style: none; }
 
-                &:dir(rtl):first-child { border-radius: $roundness 0 0 $roundness; }
+				&:dir(rtl):first-child { border-radius: $roundness 0 0 $roundness; }
 
-                &:dir(ltr):last-child { border-radius: 0 $roundness $roundness 0; }
-            }
-        }
+				&:dir(ltr):last-child { border-radius: 0 $roundness $roundness 0; }
+			}
+		}
 
-        &.vertical {
-        	border: 1px solid $borders_color;
-        	border-radius: $roundness;
+		&.vertical {
+			border: 1px solid $borders_color;
+			border-radius: $roundness;
 
-            &:focus, &:active { border-color: $selected_borders_color; }            	
-        
-            button, entry {
-                padding: 3px 1px;
-            }
+			&:focus, &:active { border-color: $selected_borders_color; }				
+		
+			button, entry {
+				padding: 3px 1px;
+			}
 
-            entry {
-                border-radius: 0;
-                border: 1px solid transparent;
-            }
+			entry {
+				border-radius: 0;
+				border: 1px solid transparent;
+			}
 
-            button {
-            	background-color: transparent;
-            	border-style: none;
+			button {
+				background-color: transparent;
+				border-style: none;
 
-                &.up {
-                    border-radius: $roundness $roundness 0 0;
-                }
+				&.up {
+					border-radius: $roundness $roundness 0 0;
+				}
 
-                &.down {
-                    border-radius: 0 0 $roundness $roundness;
-                }
-            }
-        }
-    }
+				&.down {
+					border-radius: 0 0 $roundness $roundness;
+				}
+			}
+		}
+	}
 }
 
 @include exports("combobox") {
-    combobox {
-        button.combo {
-            min-width: 0;
-        }
+	combobox {
+		button.combo {
+			min-width: 0;
+		}
 
-        arrow {
-            -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
-            min-height: 16px;
-            min-width: 16px;
-        }
+		arrow {
+			-gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+			min-height: 16px;
+			min-width: 16px;
+		}
 
-        box button, box entry {
-            @extend %linked_button;
-        }
+		box button, box entry {
+			@extend %linked_button;
+		}
 
-        .linked:not(.vertical) > & > box > button.combo {
-            &:dir(ltr) { @extend %linked_middle; }
-            &:dir(rtl) { @extend %linked_middle:dir(rtl); }
-        }
+		.linked:not(.vertical) > & > box > button.combo {
+			&:dir(ltr) { @extend %linked_middle; }
+			&:dir(rtl) { @extend %linked_middle:dir(rtl); }
+		}
 
-        .linked:not(.vertical) > &:first-child > box > button.combo { @extend %linked_button:first-child; }
+		.linked:not(.vertical) > &:first-child > box > button.combo { @extend %linked_button:first-child; }
 
-        .linked:not(.vertical) > &:last-child > box > button.combo { @extend %linked_button:last-child; }
+		.linked:not(.vertical) > &:last-child > box > button.combo { @extend %linked_button:last-child; }
 
-        .linked:not(.vertical) > &:only-child > box > button.combo { @extend %linked_button:only-child; }
+		.linked:not(.vertical) > &:only-child > box > button.combo { @extend %linked_button:only-child; }
 
-        .linked.vertical > & > box > button.combo { @extend %linked_vertical_middle; }
+		.linked.vertical > & > box > button.combo { @extend %linked_vertical_middle; }
 
-        .linked.vertical > &:first-child > box > button.combo { @extend %linked_vertical_button:first-child; }
+		.linked.vertical > &:first-child > box > button.combo { @extend %linked_vertical_button:first-child; }
 
-        .linked.vertical > &:last-child > box > button.combo { @extend %linked_vertical_button:last-child; }
+		.linked.vertical > &:last-child > box > button.combo { @extend %linked_vertical_button:last-child; }
 
-        .linked.vertical > &:only-child > box > button.combo { @extend %linked_vertical_button:only-child; }
-    }
+		.linked.vertical > &:only-child > box > button.combo { @extend %linked_vertical_button:only-child; }
+	}
 }
