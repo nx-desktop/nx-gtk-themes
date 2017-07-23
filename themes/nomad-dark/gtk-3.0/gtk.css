@@ -950,7 +950,7 @@ menubar > menuitem:hover, .menubar > menuitem:hover { border-color: mix(#363c48,
 
 menubar > menuitem *:hover, .menubar > menuitem *:hover { color: #414141; }
 
-menu, .menu, .context-menu { border: 0; border-radius: 0; padding: 0; background-color: #393F4C; color: #ababab; }
+menu, .menu, .context-menu { border: solid 1px #282B31; border-radius: 0; padding: 0; background-color: #393F4C; color: #ababab; }
 
 .csd menu, .csd .menu, .csd .context-menu { border: 0; }
 

@@ -1,6 +1,6 @@
 @include exports("window") {
 	decoration {
-		$_wm_border: $borders_color;
+		$_wm_border: $text_color;
 
 		border-radius: 4px 4px 0 0;
 		border: solid 1px $_wm_border;
@@ -79,7 +79,7 @@ headerbar, .titlebar {
 		color: $fg_color;
 		border: none;
 
-		&:hover { color: $selected_fg_color; }
+		&:hover { color: $text_color; }
 
 		&:active, &:checked { color: $selected_bg_color; }
 	}

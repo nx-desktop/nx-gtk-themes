@@ -121,11 +121,12 @@
 		&:checked {
 			background-image: none;
 			border: 1px solid $selected_borders_color;
-			color: $selected_bg_color;
+			background-color: $selected_bg_color;
+			color: $selected_fg_color;
 
 			slider {
 				box-shadow: none;
-				border: 1px solid $borders_color;
+				border: 1px solid $selected_borders_color;
 			}
 		}
 

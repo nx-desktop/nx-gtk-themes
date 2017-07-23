@@ -58,7 +58,7 @@
     menu,
     .menu,
     .context-menu {
-        border: 0;
+        border: solid 1px $borders_color;
         border-radius: 0;
         padding: 0;
         background-color: $menu_bg_color;

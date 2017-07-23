@@ -6,6 +6,4 @@ Encoding=UTF-8
 
 [X-GNOME-Metatheme]
 GtkTheme=Nomad
-IconTheme=Nomad
-MetacityTheme=Nomad
 ButtonLayout=:minimize,maximize,close
