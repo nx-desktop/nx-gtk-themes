@@ -10,22 +10,22 @@
         }
 
         background-color: $scrollbar_bg_color;
-        transition: all .3s ease-out;
+        transition: all .2s ease-out;
 
         & {
             background-color: $backdrop_scrollbar_bg_color;
             border-color: $backdrop_borders_color;
-            transition: 400ms ease-in;
+            transition: .2s ease-in;
         }
 
         slider {
             min-width: $_slider_normal_width;
             min-height: $_slider_normal_width;
-            border: 1px solid $borders_color;
+            border: none;
             border-radius: $roundness;
             background-clip: padding-box;
             background-color: $scrollbar_slider_color;
-            transition: all .3s ease-in;
+            transition: all .2s ease-in;
 
             &:hover { 
             	background-color: $scrollbar_slider_hover_color;
@@ -63,8 +63,8 @@
                 slider {
                     min-width: $_slider_small_width;
                     min-height: $_slider_small_width;
-                    background-color: $fg_color;
-                    border: 1px solid $white;
+                    background-color: $dark_bg_color;
+                    border: none;
                 }
 
                 button {

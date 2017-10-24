@@ -1,27 +1,27 @@
 @import "functions";
 
 // default color scheme
-$bg_color: #393F4C;
-$fg_color: #ababab;
-$base_color: #272B35;
+$bg_color: #4e5456;
+$fg_color: #f5f5f5;
+$base_color: #3a3f41;
 $text_color:  #ababab;
-$selected_bg_color: #379FD6;
-$selected_fg_color: #ffffff;
+$selected_bg_color: #26c6da;
+$selected_fg_color: #f5f5f5;
 $tooltip_bg_color: #efefef;
 $tooltip_fg_color: #0b0b0b;
 
-$borders_color: #282B31;
-$selected_borders_color: $borders_color;
-$borders_edge: transparentize(gray, 0.2);
+$borders_color: #3a3f41;
+$selected_borders_color: #00ACC1;
+$borders_edge: $borders_color;
 
 //insensitive state derived colors
-$insensitive_fg_color: mix($fg_color, $bg_color, .5);
-$insensitive_bg_color: mix($bg_color, $base_color, .6);
-$insensitive_borders_color: $borders_color;
+$insensitive_fg_color: #757575;
+$insensitive_bg_color: #414547;
+$insensitive_borders_color: #757575;
 
 // dark colors
-$dark_bg_color: shade($bg_color, .95);
-$dark_fg_color: shade($text_color, .35);
+$dark_bg_color: #2b2c31;
+$dark_fg_color: #f5f5f5;
 
 // shadows
 $dark_shadow: #0b0b0b;
@@ -36,7 +36,7 @@ $entry_border: $borders_color;
 
 $scrollbar_bg_color: $bg_color;
 $scrollbar_slider_color: $bg_color;
-$scrollbar_slider_hover_color: darken($bg_color, 5%);
+$scrollbar_slider_hover_color: darken($dark_bg_color, 5%);
 $scrollbar_slider_active_color: $selected_bg_color;
 
 $switch_disabled_bg_color: $insensitive_bg_color;

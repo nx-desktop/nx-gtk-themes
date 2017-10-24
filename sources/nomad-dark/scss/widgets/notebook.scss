@@ -98,7 +98,7 @@ notebook {
 			&:checked {
 				color: $selected_fg_color;
 				background-color: $selected_bg_color;
-				border-color: $borders_color;
+				border-color: $selected_borders_color;
 
 				label {
 					color: $selected_fg_color;

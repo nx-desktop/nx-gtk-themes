@@ -27,7 +27,7 @@
             margin: -1px;
 
             border-radius: 0;
-            border: 1px solid $selected_borders_color;
+            border: 1px solid $borders_color;
 
             &.left {
                 border-top-left-radius: $roundness;
@@ -220,8 +220,7 @@
             }
 
             &:disabled {
-                background-color: mix($fg_color, $bg_color, .55);
-                border-color: transparentize($_slider_border, .2);
+                background-color: $insensitive_fg_color;
             }
 
             menuitem:hover &,
