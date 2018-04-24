@@ -6,12 +6,13 @@ This is the repository for the Nomad GTK Themes.
 ![](https://i.imgur.com/IvGnDFp.png)
 
 # Requirements
-- GTK 3.20+
-- GTK 2.24+
+- GTK 3.20+.
+- GTK 2.24+.
+- GTK 2 Murrine engine.
 
 # Installing
 - Clone this Git repository or download zip.
-- Extract to `~/.themes/` or `/usr/share/themes/`
+- Extract to `~/.themes/` or `/usr/share/themes/`.
 
 # Issues
 If you find problems with the contents of this repository please create an issue.
