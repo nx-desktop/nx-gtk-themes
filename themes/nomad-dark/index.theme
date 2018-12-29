@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=X-GNOME-Metatheme
-Name=Nomad-dark
+Name=Nx-dark
 Comment=Simple dark theme
 Encoding=UTF-8
 
 [X-GNOME-Metatheme]
-GtkTheme=Nomad-dark
+GtkTheme=Nx-dark
 ButtonLayout=:minimize,maximize,close
