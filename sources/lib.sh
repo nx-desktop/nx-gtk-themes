@@ -2,7 +2,7 @@ _fail() { printf "\033[38;5;1m${@}\033[38;0;1m\n"; }
 _echo() { printf "\033[38;5;5m${@}\033[38;0;1m\n"; }
 
 _render() {
-	index=(nx{-dark,})
+	index=(nomad{-dark,})
 
 	for i in "${index[@]}"; do
 		for img in $(cat "$i/index"); do
@@ -18,8 +18,8 @@ _render() {
 }
 
 _compile() {
-	scss=(nx{-dark,}/scss/gtk.scss)
-	gcss=(../themes/nx{-dark,}/gtk-3.0/gtk.css)
+	scss=(nomad{-dark,}/scss/gtk.scss)
+	gcss=(../themes/nomad{-dark,}/gtk-3.0/gtk.css)
 
 	for i in 0 1; do
 		sassc --style compact "${scss[$i]}" "${gcss[$i]}"
