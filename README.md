@@ -1,6 +1,6 @@
-# Nomad GTK Themes [![Build Status](https://travis-ci.org/nomad-desktop/nomad-gtk-themes.svg?branch=master)](https://travis-ci.org/nomad-desktop/nomad-gtk-themes)
+# NX GTK Themes [![Build Status](https://travis-ci.org/nx-desktop/nx-gtk-themes.svg?branch=master)](https://travis-ci.org/nx-desktop/nx-gtk-themes)
 
-This is the repository for the Nomad GTK Themes.
+This is the repository for the NX GTK Themes.
 
 ![](https://i.imgur.com/wk9n38t.png)
 ![](https://i.imgur.com/IvGnDFp.png)
@@ -19,4 +19,4 @@ If you find problems with the contents of this repository please create an issue
 
 Artwork is Licensed under the [Creative Commons Attribution-Share Alike 4.0 License](https://creativecommons.org/licenses/by-sa/4.0/).
 
-©2018 Nitrux Latinoamericana S.C.
+©2019 Nitrux Latinoamericana S.C.
