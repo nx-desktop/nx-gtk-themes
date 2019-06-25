@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=X-GNOME-Metatheme
-Name=Nomad-dark
-Comment=Simple dark theme
+Name=Nitrux
+Comment=Simple light theme
 Encoding=UTF-8
 
 [X-GNOME-Metatheme]
-GtkTheme=Nomad-dark
+GtkTheme=Nitrux
 ButtonLayout=:minimize,maximize,close
