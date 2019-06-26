@@ -1,3 +1,9 @@
+nx-gtk-themes (1.0.1) nxos; urgency=medium
+
+  * Initial release
+
+ -- Uri Herrera <uri_herrera@nxos.org>  Wed, 26 Jun 2019 15:16:00 -0500
+
 nx-gtk-themes (1.0-1) nxos; urgency=medium
 
   * Initial release
