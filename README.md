@@ -2,9 +2,6 @@
 
 This is the repository for the NX GTK Themes.
 
-![](https://i.imgur.com/wk9n38t.png)
-![](https://i.imgur.com/IvGnDFp.png)
-
 # Requirements
 - GTK 3.20+.
 - GTK 2.24+.
