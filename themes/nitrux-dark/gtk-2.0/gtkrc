@@ -6,7 +6,7 @@ gtk-icon-sizes = "panel-menu=16,16:panel=8,8:gtk-button=12,12:gtk-large-toolbar=
 
 gtk-color-scheme = "fg_color: #f5f5f5"
 gtk-color-scheme = "bg_color: #4e5456"
-gtk-color-scheme = "base_color: #3a3f41"
+gtk-color-scheme = "base_color: #2b2c31"
 gtk-color-scheme = "text_color: #f5f5f5"
 gtk-color-scheme = "selected_bg_color: #26c6da"
 gtk-color-scheme = "selected_fg_color: #f5f5f5"

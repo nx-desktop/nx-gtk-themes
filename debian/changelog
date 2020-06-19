@@ -1,4 +1,10 @@
-nx-gtk-themes (1.0.1) nxos; urgency=medium
+nx-gtk-themes (1.1.0) nitrux; urgency=medium
+
+  * Update dark theme.
+
+ -- Uri Herrera <uri_herrera@nxos.org>  Fri, 19 Jun 2020 16:21:00 -0500
+ 
+nx-gtk-themes (1.0.2) nxos; urgency=medium
 
   * Initial release
 
