@@ -34,6 +34,7 @@ mk-build-deps -i -t "apt-get --yes" -r
 		done
 
 		sassc -t compressed "$var/scss/gtk.scss" "themes/$var/gtk-3.0/gtk.css"
+		cp -r "$var/gtk-2.0" "themes/$var"
 	done
 
 	mv themes ..
