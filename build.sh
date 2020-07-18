@@ -25,7 +25,7 @@ mk-build-deps -i -t "apt-get --yes" -r
 
 (
 	cd src
-	for var in nomad*; do
+	for var in nitrux*; do
 		mkdir -p "themes/$var/gtk-3.0/img"
 
 		cat "$src/index" | while read id; do

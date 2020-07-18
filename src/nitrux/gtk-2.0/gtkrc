@@ -1,4 +1,4 @@
-# - - - Nitrux gtk theme
+#	Nitrux gtk theme.
 
 gtk-auto-mnemonics	= 1
 gtk-button-images	= 0
@@ -117,7 +117,7 @@ style "default" {
 	fg[PRELIGHT]	= @fg_color
 	fg[SELECTED]	= @selected_fg_color
 	fg[ACTIVE]		= @fg_color
-	fg[INSENSITIVE]	= mix (0.96, @base_color, @text_color)
+	fg[INSENSITIVE]	= mix (0.4, @base_color, @text_color)
 
 	bg[NORMAL]		= @bg_color
 	bg[PRELIGHT]	= @bg_color
@@ -183,7 +183,8 @@ style "thin" {
 	ythickness = 0
 }
 
-# Notebook
+
+#	notebook.
 
 style "notebook-bg" {
 	bg[NORMAL] = @bg_color
@@ -198,7 +199,8 @@ style "notebook" = "notebook-bg" {
 	ythickness = 3
 }
 
-# Various Standard Widgets
+
+#	various standard widgets.
 
 style "button" = "wider" {
 	bg[NORMAL] = @bg_color
@@ -212,6 +214,7 @@ style "button" = "wider" {
   	engine "murrine" {
 		border_shades = { 1.2, 1.2 }
 		textstyle = 0
+		roundness = 4
 	}
 }
 
@@ -339,7 +342,8 @@ style "vscale" = "scale" { }
 style "hscrollbar" = "scrollbar" { }
 style "vscrollbar" = "scrollbar" { }
 
-# Menus
+
+# 	menus.
 
 style "menu" = "thin" {
 	bg[NORMAL] = @menu_bg_color
@@ -422,7 +426,8 @@ style "menubaritem" {
 	}
 }
 
-# Toolbars
+
+# 	toolbars.
 
 style "toolbar" = "thin" {
 	bg[NORMAL] = @bg_color
@@ -465,7 +470,8 @@ class "GtkToolbar" style "toolbar"
 class "GtkHandleBox" style "toolbar"
 widget_class "*Toolbar*.*Separator*" style "toolbar"
 
-# Panels
+
+#	panels.
 
 style "panel" {
 	xthickness = 10
@@ -532,7 +538,8 @@ style "bold-panel-item" {
 widget "*Panel*MenuBar*" style "bold-panel-item"
 widget "*gimmie*" style "bold-panel-item"
 
-# XFCE Styles
+
+#	XFCE styles.
 
 style "workspace-switcher" = "panel" {
 	bg[ACTIVE] = @selected_bg_color
@@ -622,7 +629,8 @@ widget "*Pager*" style "workspace-switcher"
 widget "*Xfce*Panel*" style "panel"
 class "*Xfce*Panel*" style "panel"
 
-# Thunar Styles
+
+#	thunar styles.
 
 style "sidepane" {
 	base[NORMAL] = @bg_color
@@ -635,7 +643,8 @@ widget_class "*ThunarShortcutsView*" style "sidepane"
 widget_class "*ThunarTreeView*" style "sidepane"
 widget_class "*ThunarLocationEntry*" style "entry"
 
-# Gtk2 Open-File Dialog
+
+#	gtk2 open-file dialog.
 
 widget_class "*GtkFileChooserWidget.GtkFileChooserDefault.GtkVBox.GtkHPaned.GtkVBox.GtkScrolledWindow.GtkTreeView*" style "sidepane"
 widget_class "*GtkFileChooserWidget.GtkFileChooserDefault.GtkVBox.GtkHPaned.GtkVBox.GtkScrolledWindow.<GtkTreeView>.<GtkButton>" style "treeview-header"
@@ -669,7 +678,8 @@ class "ChromeGtkFrame" style "chrome-gtk-frame"
 
 widget_class "*Chrom*Button*" style "chromium-toolbar-button"
 
-# General Styles
+
+#	general styles.
 
 class "GtkWidget" style "default"
 
@@ -801,7 +811,8 @@ widget "*HandleBox*DropperToolbar*" style "inkscape-toolbar-fix"
 widget "*HandleBox*ConnectorToolbar*" style "inkscape-toolbar-fix"
 widget "*HandleBox*PaintbucketToolbar*" style "inkscape-toolbar-fix"
 
-# Performance Fixes
+
+#	performance fixes.
 
 style "performance-fix" {
 	engine "murrine" {

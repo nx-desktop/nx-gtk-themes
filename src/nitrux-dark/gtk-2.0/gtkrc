@@ -1,4 +1,4 @@
-# - - - Nitrux dark gtk theme
+#	Nitrux dark gtk theme.
 
 gtk-auto-mnemonics	= 1
 gtk-button-images	= 0
@@ -6,6 +6,8 @@ gtk-icon-sizes = "panel-menu=16,16:panel=8,8:gtk-button=12,12:gtk-large-toolbar=
 
 gtk-color-scheme = "fg_color: #f5f5f5"
 gtk-color-scheme = "bg_color: #2b2c31"
+gtk-color-scheme = "insensitive_bg_color: #414547"
+gtk-color-scheme = "insensitive_fg_color: #757575"
 gtk-color-scheme = "base_color: #2b2c31"
 gtk-color-scheme = "text_color: #f5f5f5"
 gtk-color-scheme = "selected_bg_color: #26c6da"
@@ -21,6 +23,7 @@ gtk-color-scheme = "menu_fg_color: #f5f5f5"
 gtk-color-scheme = "panel_bg_color: #2b2c31"
 gtk-color-scheme = "panel_fg_color: #2b2c31"
 gtk-color-scheme = "link_color: #40abd3"
+gtk-color-scheme = "button_bg_color: #3a3f41"
 
 style "default" {
 	GtkArrow::arrow-scaling= 0.6
@@ -121,7 +124,7 @@ style "default" {
 	bg[PRELIGHT]	= @bg_color
 	bg[SELECTED]	= @selected_bg_color
 	bg[ACTIVE]		= @bg_color
-	bg[INSENSITIVE]	= shade (0.85, @bg_color)
+	bg[INSENSITIVE]	= @insensitive_bg_color
 
 	base[NORMAL]		= @base_color
 	base[PRELIGHT]		= @base_color
@@ -181,7 +184,8 @@ style "thin" {
 	ythickness = 0
 }
 
-# Notebook
+
+#	notebook.
 
 style "notebook-bg" {
 	bg[NORMAL] = @bg_color
@@ -206,21 +210,24 @@ style "notebook" {
 	}
 }
 
-# Various Standard Widgets
+
+#	various standard widgets.
 
 style "button" = "wider" {
-	bg[NORMAL] = @bg_color
-	bg[PRELIGHT] = shade (0.95, @bg_color)
+	bg[NORMAL] = @button_bg_color
+	bg[PRELIGHT] = shade (0.95, @button_bg_color)
 	bg[ACTIVE] = @selected_bg_color
-	bg[INSENSITIVE] = shade (0.85, @bg_color)
+	# bg[INSENSITIVE] = shade (0.85, @bg_color)
 
 	fg[NORMAL] = @fg_color
 	fg[ACTIVE] = @selected_fg_color
+	fg[INSENSITIVE] = @insensitive_fg_color
 
   	engine "murrine" {
-		border_shades = { 0.7, 0.7 }
+		border_shades = { 1.5, 1.5 }
 		textstyle = 0
 		contrast = 0.1
+		roundness = 4
 	}
 }
 
@@ -353,7 +360,8 @@ style "vscale" = "scale" { }
 style "hscrollbar" = "scrollbar" { }
 style "vscrollbar" = "scrollbar" { }
 
-# Menus
+
+#	menus.
 
 style "menu" = "thin" {
 	bg[NORMAL] = @menu_bg_color
@@ -436,7 +444,8 @@ style "menubaritem" {
 	}
 }
 
-# Toolbars
+
+#	toolbars.
 
 style "toolbar" = "thin" {
 	bg[NORMAL] = @bg_color
@@ -479,7 +488,8 @@ class "GtkToolbar" style "toolbar"
 class "GtkHandleBox" style "toolbar"
 widget_class "*Toolbar*.*Separator*" style "toolbar"
 
-# Panels
+
+#	panels.
 
 style "panel" {
 	xthickness = 10
@@ -514,6 +524,7 @@ style "panel" {
 	}
 }
 
+
 widget "*PanelWidget*" style "panel"
 widget "*PanelApplet*" style "panel"
 widget "*fast-user-switch*" style "panel"
@@ -546,7 +557,8 @@ style "bold-panel-item" {
 widget "*Panel*MenuBar*" style "bold-panel-item"
 widget "*gimmie*" style "bold-panel-item"
 
-# Thunar Styles
+
+#	thunar styles.
 
 style "sidepane" {
 	base[NORMAL] = @bg_color
@@ -559,7 +571,8 @@ widget_class "*ThunarShortcutsView*" style "sidepane"
 widget_class "*ThunarTreeView*" style "sidepane"
 widget_class "*ThunarLocationEntry*" style "entry"
 
-# Gtk2 Open-File Dialog
+
+#	gtk2 open-file dialog.
 
 widget_class "*GtkFileChooserWidget.GtkFileChooserDefault.GtkVBox.GtkHPaned.GtkVBox.GtkScrolledWindow.GtkTreeView*" style "sidepane"
 widget_class "*GtkFileChooserWidget.GtkFileChooserDefault.GtkVBox.GtkHPaned.GtkVBox.GtkScrolledWindow.<GtkTreeView>.<GtkButton>" style "treeview-header"
@@ -593,7 +606,8 @@ class "ChromeGtkFrame" style "chrome-gtk-frame"
 
 widget_class "*Chrom*Button*" style "chromium-toolbar-button"
 
-# General Styles
+
+#	general styles.
 
 class "GtkWidget" style "default"
 
@@ -725,7 +739,8 @@ widget "*HandleBox*DropperToolbar*" style "inkscape-toolbar-fix"
 widget "*HandleBox*ConnectorToolbar*" style "inkscape-toolbar-fix"
 widget "*HandleBox*PaintbucketToolbar*" style "inkscape-toolbar-fix"
 
-# Performance Fixes
+
+#	performance fixes.
 
 style "performance-fix" {
 	engine "murrine" {

@@ -1,7 +1,7 @@
 dist: bionic
 
 script:
-  - sudo ./travis-build.sh
+  - sudo ./build.sh
 
 branches:
   only:
