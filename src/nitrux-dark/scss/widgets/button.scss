@@ -188,9 +188,9 @@
 		@include linear-gradient(shade($button_bg, 1.08));
 	} @else {
 		@include linear-gradient($button_bg);
-		@include border(rgba(0, 0, 0, .12 + $border_strength));  
+		@include border(rgba(0, 0, 0, .12 + $border_strength));
 	}
-	
+
 	color: $fg;
 
 	&, &.flat {
@@ -351,8 +351,8 @@
 			border: 1px solid $borders_color;
 			border-radius: $roundness;
 
-			&:focus, &:active { border-color: $selected_borders_color; }				
-		
+			&:focus, &:active { border-color: $selected_borders_color; }
+
 			button, entry {
 				padding: 3px 1px;
 			}
