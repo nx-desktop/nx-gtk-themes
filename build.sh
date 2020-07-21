@@ -1,23 +1,14 @@
 #! /bin/sh
 
 
-apt-get --yes update
-apt-get --yes install wget
-
-
-#	add KDE Neon repository.
-
-> /etc/apt/sources.list.d/neon-stable.list \
-	echo 'deb http://archive.neon.kde.org/dev/stable/ bionic main'
-
-wget -qO - 'http://archive.neon.kde.org/public.key' | apt-key add -
-
-
 #	install dependencies.
 
-apt-get --yes update
-apt-get --yes dist-upgrade
-apt-get --yes install devscripts lintian build-essential automake autotools-dev equivs inkscape sassc
+apt -yy -qq update
+apt -yy -qq dist-upgrade
+
+apt -yy -qq install devscripts lintian build-essential automake autotools-dev equivs inkscape sassc \
+	 --no-install-recommends
+
 mk-build-deps -i -t "apt-get --yes" -r
 
 
