@@ -4,7 +4,7 @@
 #	install dependencies.
 
 apt -yy -qq update
-apt -yy -qq dist-upgrade
+# apt -yy -qq dist-upgrade
 
 apt -yy -qq install devscripts lintian build-essential automake autotools-dev equivs inkscape sassc \
 	 --no-install-recommends
@@ -19,7 +19,7 @@ mk-build-deps -i -t "apt-get --yes" -r
 	for var in nitrux*; do
 		mkdir -p "themes/$var/gtk-3.0/img"
 
-		cat "$src/index" | while read id; do
+		cat "$var/index" | while read id; do
 			inkscape "$var/img.svg" -ji "$id" -o "themes/$var/gtk-3.0/img/$id.png"
 			inkscape "$var/img.svg" -ji "$id" -d 192 -o "themes/$var/gtk-3.0/img/$id@2.png"
 		done
