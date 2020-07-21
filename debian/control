@@ -1,7 +1,7 @@
 Source: nx-gtk-themes
 Section: gnome
 Priority: optional
-Maintainer: Alexis L?pez Zubieta <azubieta90@gmail.com>
+Maintainer: Luis Lavaire <llavaire01@gmail.com>
 Build-Depends: debhelper (>=9)
 Standards-Version: 3.9.6
 # Homepage: <insert the upstream URL, if relevant>
@@ -11,4 +11,4 @@ Standards-Version: 3.9.6
 Package: nx-gtk-themes
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Nx Gtk Themes
+Description: Minimal theme for GTK.

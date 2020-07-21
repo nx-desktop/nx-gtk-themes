@@ -1,6 +1,6 @@
 # Nomad GTK Themes [![Build Status](https://travis-ci.org/nomad-desktop/nomad-gtk-themes.svg?branch=master)](https://travis-ci.org/nomad-desktop/nomad-gtk-themes)
 
-This is the repository for the Nomad GTK Themes.
+Minimal theme for GTK.
 
 ![](https://i.imgur.com/wk9n38t.png)
 ![](https://i.imgur.com/IvGnDFp.png)
