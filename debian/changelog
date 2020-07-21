@@ -1,4 +1,11 @@
-nx-gtk-themes (1.0-1) nxos; urgency=medium
+nx-gtk-themes (1.0-2) nitrux; urgency=medium
+
+  * fixed dark theme issues.
+
+ -- Luis Lavaire <llavaire1@gmail.com>  Tue, 21 Jul 2020 16:33:36 -0600
+
+
+nx-gtk-themes (1.0-1) nitrux; urgency=medium
 
   * Initial release
 
