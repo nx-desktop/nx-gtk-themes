@@ -180,11 +180,9 @@
 	$border_strength: if(lightness($bg) > 20, 0, .1);
 	$shadow_strength: if(lightness($bg) > 20, 0, .1);
 
-	$button_bg: $bg_color;
-
 	@extend %button;
 	@if (lightness($button_bg) > 20) {
-		border-color: border_normal($button_bg);
+		border-color: $button_border;
 		@include linear-gradient(shade($button_bg, 1.08));
 	} @else {
 		@include linear-gradient($button_bg);
