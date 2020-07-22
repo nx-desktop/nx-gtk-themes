@@ -1,13 +1,13 @@
 Source: nx-gtk-themes
 Section: gnome
 Priority: optional
-Maintainer: Uri Herrera <uri_herrera@nxos.org>
+Maintainer: Luis Lavaire <llavaire01@gmail.com>
 Build-Depends: debhelper (>=9)
 Standards-Version: 3.9.6
 
 Package: nx-gtk-themes
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: NX GTK Themes
+Description: GTK Themes used in Nitrux
  GTK themes to integrate GTK software with
- Plasma 5.
+ NX Desktop.
