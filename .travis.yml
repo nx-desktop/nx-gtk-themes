@@ -1,12 +1,15 @@
-dist: bionic
+dist: focal
+
+before_install:
+  - gem install package_cloud
 
 script:
-  - sudo ./build.sh
+  - sudo ./travis-build.sh
+  - package_cloud push nitrux/repo/debian/trixie *.deb
 
 branches:
   only:
     - master
-    - development
 
 deploy:
   - provider: script
