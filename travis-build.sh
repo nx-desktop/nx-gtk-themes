@@ -1,16 +1,15 @@
-#! /bin/sh
+#!/bin/bash
 
+set -x
 
-#	install dependencies.
+apt -qq update
+apt -qq -yy install equivs curl git wget gnupg2
 
-apt -yy -qq update
-# apt -yy -qq dist-upgrade
+### Install Dependencies
 
-apt -yy -qq install devscripts lintian build-essential automake autotools-dev equivs inkscape sassc \
-	 --no-install-recommends
+DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends devscripts debhelper gettext lintian build-essential automake autotools-dev cmake extra-cmake-modules appstream
 
 mk-build-deps -i -t "apt-get --yes" -r
-
 
 #	render images & compile themes.
 
@@ -30,7 +29,6 @@ mk-build-deps -i -t "apt-get --yes" -r
 
 	mv themes ..
 )
-
 
 #	build deb.
 mkdir source
